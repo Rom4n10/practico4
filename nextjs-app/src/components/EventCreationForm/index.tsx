@@ -18,10 +18,10 @@ interface Props {
 }
 
 export default function EventCreationForm({ existingNames = [] }: Props) {
-  const [name, setName]         = useState('');
+  const [name, setName] = useState('');
   const [duration, setDuration] = useState('');
-  const [status, setStatus]     = useState<'Activo' | 'Borrador' | null>(null);
-  const [error, setError]       = useState('');
+  const [status, setStatus] = useState<'Activo' | 'Borrador' | null>(null);
+  const [error, setError] = useState('');
 
   function handleSave() {
     setError('');
@@ -29,7 +29,7 @@ export default function EventCreationForm({ existingNames = [] }: Props) {
 
     // US_006: Detectar nombre duplicado
     if (existingNames.includes(name.trim())) {
-      setError('Ya existe un evento con este nombre. Por favor elija uno diferente');
+      setError('Ya hay un evento con este nombre. Por favor elija uno diferente');
       return;
     }
 

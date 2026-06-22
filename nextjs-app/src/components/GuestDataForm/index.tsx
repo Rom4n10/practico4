@@ -1,19 +1,8 @@
 'use client';
 /**
- * GuestDataForm — Formulario de datos del paciente (Paso 3 del Booking)
+ * GuestDataForm — Formulario de datos del paciente
  * Cubre: US_015, US_016, US_019
- *
- * US_015: El sistema valida que el email ingresado tenga formato correcto.
- * US_016: El nombre debe tener al menos 3 caracteres para continuar.
- * US_019: El botón "Siguiente" se habilita solo cuando el formulario es válido.
- *
- * Reglas de negocio (extraídas de booking.js → isFormValid):
- *   - fullName: mínimo 3 caracteres (sin espacios leading/trailing)
- *   - email:    debe pasar regex /^[^\s@]+@[^\s@]+\.[^\s@]+$/
- *   - phone:    opcional
- *   - note:     opcional
  */
-
 import { useState } from 'react';
 
 interface Props {
@@ -24,14 +13,12 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function GuestDataForm({ onSubmit }: Props) {
   const [fullName, setFullName] = useState('');
-  const [email, setEmail]       = useState('');
-  const [phone, setPhone]       = useState('');
-  const [note, setNote]         = useState('');
-
-  const [nameError, setNameError]   = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [note, setNote] = useState('');
+  const [nameError, setNameError] = useState('');
   const [emailError, setEmailError] = useState('');
 
-  // Validación en tiempo real del nombre
   function handleNameChange(value: string) {
     setFullName(value);
     if (value.trim().length > 0 && value.trim().length < 3) {
@@ -41,7 +28,6 @@ export default function GuestDataForm({ onSubmit }: Props) {
     }
   }
 
-  // Validación en tiempo real del email
   function handleEmailChange(value: string) {
     setEmail(value);
     if (value.trim().length > 0 && !EMAIL_REGEX.test(value.trim())) {
@@ -51,7 +37,6 @@ export default function GuestDataForm({ onSubmit }: Props) {
     }
   }
 
-  // El formulario es válido si nombre ≥ 3 chars Y email correcto
   const isValid = fullName.trim().length >= 3 && EMAIL_REGEX.test(email.trim());
 
   function handleSubmit() {
@@ -60,55 +45,55 @@ export default function GuestDataForm({ onSubmit }: Props) {
   }
 
   return (
-    <form>
-      {/* Nombre completo */}
-      <div>
+    <form className="card">
+      <div className="form-group">
         <label htmlFor="fullName">Nombre completo</label>
         <input
           id="fullName"
+          className="input"
           type="text"
           value={fullName}
           onChange={(e) => handleNameChange(e.target.value)}
         />
-        {nameError && <span role="alert">{nameError}</span>}
+        {nameError && <span className="field-error" role="alert">{nameError}</span>}
       </div>
 
-      {/* Email */}
-      <div>
+      <div className="form-group">
         <label htmlFor="email">Email</label>
         <input
           id="email"
+          className="input"
           type="email"
           value={email}
           onChange={(e) => handleEmailChange(e.target.value)}
         />
-        {emailError && <span role="alert">{emailError}</span>}
+        {emailError && <span className="field-error" role="alert">{emailError}</span>}
       </div>
 
-      {/* Teléfono (opcional) */}
-      <div>
+      <div className="form-group">
         <label htmlFor="phone">Teléfono (opcional)</label>
         <input
           id="phone"
+          className="input"
           type="tel"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
         />
       </div>
 
-      {/* Nota (opcional) */}
-      <div>
+      <div className="form-group">
         <label htmlFor="note">Nota</label>
         <textarea
           id="note"
+          className="textarea"
           value={note}
           onChange={(e) => setNote(e.target.value)}
         />
       </div>
 
-      {/* Botón habilitado solo cuando el formulario es válido (US_019) */}
       <button
         type="button"
+        className="btn btn-primary"
         onClick={handleSubmit}
         disabled={!isValid}
       >

@@ -1,0 +1,212 @@
+/* Shared UI components */
+
+.card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.625rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background var(--transition-base), border-color var(--transition-base);
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--color-bg-hover);
+  border-color: var(--color-primary-500);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--color-primary-600);
+  border-color: var(--color-primary-600);
+  color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-primary-700);
+  border-color: var(--color-primary-700);
+}
+
+.btn-slot {
+  min-width: 4.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-variant-numeric: tabular-nums;
+}
+
+.btn-day {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  background: var(--color-primary-600);
+  border-color: var(--color-primary-600);
+  color: #fff;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  font-size: 0.875rem;
+  font-family: inherit;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 1px;
+}
+
+.textarea {
+  min-height: 5rem;
+  resize: vertical;
+}
+
+.filter-panel {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  align-items: end;
+  margin-bottom: var(--space-5);
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.125rem 0.625rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.badge-active {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--color-success-500);
+}
+
+.badge-inactive {
+  background: rgba(148, 163, 184, 0.2);
+  color: var(--color-text-tertiary);
+}
+
+.alert {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-4);
+}
+
+.alert-error {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--color-danger-500);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.alert-success {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--color-success-500);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.event-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.event-list-item {
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-secondary);
+}
+
+.event-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-secondary);
+}
+
+.slot-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.booking-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--radius-full);
+  background: var(--color-primary-600);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-right: var(--space-2);
+}
+
+.field-error {
+  font-size: 0.8125rem;
+  color: var(--color-danger-500);
+}
+
+.status-message {
+  font-size: 0.875rem;
+  color: var(--color-success-500);
+  font-weight: 500;
+  margin-bottom: var(--space-4);
+}

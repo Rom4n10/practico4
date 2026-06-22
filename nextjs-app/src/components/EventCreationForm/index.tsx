@@ -2,14 +2,6 @@
 /**
  * EventCreationForm
  * Cubre: US_003, US_004, US_006 — Creación de Tipos de Eventos
- *
- * Props:
- *   existingNames: lista de nombres ya existentes para detectar duplicados
- *
- * Lógica de estado:
- *   - nombre + duración completos → status "Activo"
- *   - falta duración → status "Borrador"
- *   - nombre duplicado → muestra error, no guarda
  */
 import { useState } from 'react';
 
@@ -27,14 +19,11 @@ export default function EventCreationForm({ existingNames = [] }: Props) {
     setError('');
     setStatus(null);
 
-    // US_006: Detectar nombre duplicado
     if (existingNames.includes(name.trim())) {
       setError('Ya hay un evento con este nombre. Por favor elija uno diferente');
       return;
     }
 
-    // US_003: Activo si nombre + duración presentes
-    // US_004: Borrador si falta duración
     if (name.trim() && duration.trim()) {
       setStatus('Activo');
     } else {
@@ -43,34 +32,33 @@ export default function EventCreationForm({ existingNames = [] }: Props) {
   }
 
   return (
-    <div>
-      {/* Mensaje de error por duplicado */}
-      {error && <p role="alert">{error}</p>}
+    <div className="card">
+      {error && <p className="alert alert-error" role="alert">{error}</p>}
+      {status && <p className="status-message">Estado: {status}</p>}
 
-      {/* Estado resultante tras guardar */}
-      {status && <p>Estado: {status}</p>}
-
-      <div>
+      <div className="form-group">
         <label htmlFor="nombre">Nombre</label>
         <input
           id="nombre"
+          className="input"
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
       </div>
 
-      <div>
+      <div className="form-group">
         <label htmlFor="duracion">Duración</label>
         <input
           id="duracion"
+          className="input"
           type="number"
           value={duration}
           onChange={(e) => setDuration(e.target.value)}
         />
       </div>
 
-      <button type="button" onClick={handleSave}>
+      <button type="button" className="btn btn-primary" onClick={handleSave}>
         Guardar
       </button>
     </div>

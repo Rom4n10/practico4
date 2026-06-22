@@ -2,15 +2,6 @@
 /**
  * EventDashboard
  * Cubre: US_009, US_010 — Filtrado de tipos de eventos
- *
- * Props:
- *   events: lista de eventos a mostrar
- *
- * Lógica:
- *   - Filtro por estado ("Activo" | "Inactivo")
- *   - Filtro por duración (número exacto en minutos)
- *   - "Sin resultados encontrados" si ningún evento pasa los filtros
- *   - Botón "Limpiar Filtros" resetea todos los filtros
  */
 import { useState } from 'react';
 
@@ -26,12 +17,11 @@ interface Props {
 }
 
 export default function EventDashboard({ events }: Props) {
-  const [statusFilter, setStatusFilter]     = useState('');
+  const [statusFilter, setStatusFilter] = useState('');
   const [durationFilter, setDurationFilter] = useState('');
 
-  // Aplicar filtros
   const filtered = events.filter((e) => {
-    if (statusFilter   && e.status !== statusFilter)          return false;
+    if (statusFilter && e.status !== statusFilter) return false;
     if (durationFilter && e.duration !== Number(durationFilter)) return false;
     return true;
   });
@@ -42,45 +32,52 @@ export default function EventDashboard({ events }: Props) {
   }
 
   return (
-    <div>
-      {/* Filtro por estado */}
-      <div>
-        <label htmlFor="estado">Estado</label>
-        <select
-          id="estado"
-          value={statusFilter}
-          onChange={(e) => setStatusFilter(e.target.value)}
-        >
-          <option value="">Todos</option>
-          <option value="Activo">Activo</option>
-          <option value="Inactivo">Inactivo</option>
-        </select>
+    <div className="card">
+      <div className="filter-panel">
+        <div className="form-group">
+          <label htmlFor="estado">Estado</label>
+          <select
+            id="estado"
+            className="select"
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value)}
+          >
+            <option value="">Todos</option>
+            <option value="Activo">Activo</option>
+            <option value="Inactivo">Inactivo</option>
+          </select>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="duracion">Duración</label>
+          <input
+            id="duracion"
+            className="input"
+            type="number"
+            value={durationFilter}
+            onChange={(e) => setDurationFilter(e.target.value)}
+            placeholder="Minutos"
+          />
+        </div>
+
+        <button type="button" className="btn" onClick={clearFilters}>
+          Limpiar Filtros
+        </button>
       </div>
 
-      {/* Filtro por duración */}
-      <div>
-        <label htmlFor="duracion">Duración</label>
-        <input
-          id="duracion"
-          type="number"
-          value={durationFilter}
-          onChange={(e) => setDurationFilter(e.target.value)}
-          placeholder="Minutos"
-        />
-      </div>
-
-      {/* Botón limpiar */}
-      <button type="button" onClick={clearFilters}>
-        Limpiar Filtros
-      </button>
-
-      {/* Lista de eventos o mensaje vacío */}
       {filtered.length === 0 ? (
         <p>Sin resultados encontrados</p>
       ) : (
-        <ul>
+        <ul className="event-list">
           {filtered.map((e) => (
-            <li key={e.id}>{e.name}</li>
+            <li key={e.id} className="event-list-item">
+              <div className="event-row">
+                <span>{e.name}</span>
+                <span className={`badge ${e.status === 'Activo' ? 'badge-active' : 'badge-inactive'}`}>
+                  {e.status}
+                </span>
+              </div>
+            </li>
           ))}
         </ul>
       )}

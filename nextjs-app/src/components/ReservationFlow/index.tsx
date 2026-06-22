@@ -2,17 +2,6 @@
 /**
  * ReservationFlow
  * Cubre: US_020, US_022, US_023 — Flujo de reserva y concurrencia
- *
- * Props:
- *   isLockedTemp:       el slot 10:00 está bloqueado temporalmente
- *   success:            la reserva fue exitosa
- *   concurrencyConflict: hubo colisión de concurrencia al guardar
- *   eventName, date, time: datos para mostrar en confirmación
- *
- * Lógica:
- *   - isLockedTemp=true   → botón 10:00 aparece deshabilitado
- *   - success=true        → al hacer click en "Aceptar" muestra confirmación exitosa
- *   - concurrencyConflict=true → al hacer click en "Aceptar" muestra alerta de colisión
  */
 import { useState } from 'react';
 
@@ -30,8 +19,6 @@ export default function ReservationFlow({
   success = false,
   concurrencyConflict = false,
   eventName,
-  date,
-  time,
 }: Props) {
   const [message, setMessage] = useState('');
 
@@ -46,23 +33,28 @@ export default function ReservationFlow({
   }
 
   return (
-    <div>
-      {/* Slot de turno — deshabilitado si está bloqueado temporalmente (US_020) */}
+    <div className="card booking-flow">
       <button
         type="button"
+        className="btn btn-slot"
         aria-label="10:00"
         disabled={isLockedTemp}
       >
         10:00
       </button>
 
-      {/* Botón de confirmación (US_022, US_023) */}
-      <button type="button" onClick={handleAceptar}>
+      <button type="button" className="btn btn-primary" onClick={handleAceptar}>
         Aceptar
       </button>
 
-      {/* Mensaje resultante (éxito o conflicto) */}
-      {message && <p role="alert">{message}</p>}
+      {message && (
+        <p
+          className={`alert ${concurrencyConflict ? 'alert-error' : 'alert-success'}`}
+          role="alert"
+        >
+          {message}
+        </p>
+      )}
     </div>
   );
 }

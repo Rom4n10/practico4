@@ -38,7 +38,7 @@ describe('US_003, US_004, US_006: Creación de Tipos de Eventos', () => {
     fireEvent.click(screen.getByRole('button', { name: /guardar/i }));
 
     expect(
-      screen.getByText(/ya existe un evento con este nombre. por favor elija uno diferente/i)
+      screen.getByText(/ya hay un evento con este nombre. por favor elija uno diferente/i)
     ).toBeInTheDocument();
   });
 

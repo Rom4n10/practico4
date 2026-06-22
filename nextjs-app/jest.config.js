@@ -1,26 +1,31 @@
 /** @type {import('jest').Config} */
 const config = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
+  testEnvironment: 'jest-environment-jsdom',
+
+  // setupFilesAfterEnv: ejecuta código después de que el test environment está listo
+  // Aquí se cargan los matchers de @testing-library/jest-dom
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+
+  testMatch: [
+    '**/__tests__/**/*.test.ts',
+    '**/__tests__/**/*.test.tsx',
+  ],
+
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
-  testMatch: ['**/__tests__/**/*.test.ts', '**/__tests__/**/*.test.tsx'],
+
   transform: {
     '^.+\\.tsx?$': ['ts-jest', {
       tsconfig: {
-        // ts-jest necesita 'node' — Next.js usa 'bundler' que no es compatible
         moduleResolution: 'node',
         esModuleInterop: true,
         strict: true,
         jsx: 'react-jsx',
-        paths: {
-          '@/*': ['./src/*'],
-        },
+        paths: { '@/*': ['./src/*'] },
       },
     }],
   },
 };
 
 module.exports = config;
-

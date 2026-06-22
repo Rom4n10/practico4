@@ -1,9 +1,6 @@
 /**
  * Tipos principales del Sistema de Gestión Hospitalaria ICS
- * Migraci贸n desde vanilla JS a TypeScript
  */
-
-// ─── Tipos de Evento ───────────────────────────────────────────────────────────
 
 export type Modality = 'presencial' | 'virtual' | 'ambas';
 export type ConfirmationType = 'auto' | 'manual';
@@ -13,12 +10,12 @@ export interface EventType {
   id: string;
   name: string;
   description: string;
-  duration: number; // minutos
+  duration: number;
   modality: Modality;
   confirmation: ConfirmationType;
   status: EventStatus;
-  createdAt: string; // ISO string
-  updatedAt: string; // ISO string
+  createdAt: string;
+  updatedAt: string;
   mediaFiles: MediaFile[];
 }
 
@@ -28,8 +25,6 @@ export interface MediaFile {
   url: string;
 }
 
-// ─── Filtros de Evento ─────────────────────────────────────────────────────────
-
 export interface EventFilters {
   search: string;
   status: EventStatus | 'all';
@@ -37,8 +32,6 @@ export interface EventFilters {
   dateFrom: string;
   dateTo: string;
 }
-
-// ─── Reservas (Booking) ────────────────────────────────────────────────────────
 
 export interface BookingConfig {
   sessionTimeoutMs: number;
@@ -49,14 +42,14 @@ export interface BookingConfig {
   minAdvanceHours: number;
   maxBookingsPerDay: number;
   slotIntervalMinutes: number;
-  workStart: number; // hora (ej: 8)
-  workEnd: number;   // hora (ej: 18)
-  blockedDays: number[]; // 0=Dom, 1=Lun, etc.
-  blockedDates: string[]; // 'YYYY-MM-DD'
+  workStart: number;
+  workEnd: number;
+  blockedDays: number[];
+  blockedDates: string[];
 }
 
 export interface TimeSlot {
-  time: string;      // 'HH:MM'
+  time: string;
   available: boolean;
   locked: boolean;
 }
@@ -70,16 +63,12 @@ export interface BookingEventType {
   icon: string;
 }
 
-// ─── Formulario de Paciente ────────────────────────────────────────────────────
-
 export interface GuestData {
   fullName: string;
   email: string;
   phone: string;
   note: string;
 }
-
-// ─── Validaciones ──────────────────────────────────────────────────────────────
 
 export interface ValidationResult {
   valid: boolean;
@@ -94,11 +83,9 @@ export interface EventFormData {
   confirmation: ConfirmationType;
 }
 
-// ─── Sugerencias ──────────────────────────────────────────────────────────────
-
 export interface SlotSuggestion {
-  date: string;         // 'YYYY-MM-DD'
-  time: string;         // 'HH:MM'
-  displayDate: string;  // 'Lun 15 de Abril'
-  displayTime: string;  // '10:00 AM'
+  date: string;
+  time: string;
+  displayDate: string;
+  displayTime: string;
 }

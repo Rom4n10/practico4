@@ -1,4 +1,4 @@
-# HealthAdmin — Next.js App
+# AgendaYa — Next.js App
 
 Aplicación del práctico 4: módulos M03 (Tipos de Evento) y M04 (Reservas), con UI portada desde `ics/`, 18 tests unitarios y CI en GitHub Actions.
 

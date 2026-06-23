@@ -45,7 +45,7 @@ export default function EventTypesView() {
       <div className="page-header">
         <div className="page-title-group">
           <h1 className="page-title">Tipos de Evento</h1>
-          <p className="page-subtitle">Administra los tipos de evento disponibles para la agenda médica</p>
+          <p className="page-subtitle">Administra los tipos de evento disponibles para tu agenda</p>
         </div>
         <div className="page-actions" style={{ display: 'flex', gap: 'var(--space-2)' }}>
           <button type="button" className="btn btn-primary" onClick={() => setModalOpen(true)}>

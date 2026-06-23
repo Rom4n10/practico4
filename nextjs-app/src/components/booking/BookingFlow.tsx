@@ -15,7 +15,7 @@ import { toCalendarSlots } from '@/lib/adapters';
 import { formatDateKey, generateTimeSlots, isDateBlocked } from '@/lib/booking';
 import type { BookingEventType } from '@/types';
 
-const STEPS = ['Consulta', 'Horario', 'Datos', 'Confirmar'];
+const STEPS = ['Evento', 'Horario', 'Datos', 'Confirmar'];
 const ACTIVE_EVENT_IDS = new Set(
   EVENT_TYPES_DATA.filter((e) => e.status === 'active').map((e) => e.id)
 );
@@ -75,11 +75,11 @@ export default function BookingFlow() {
           <div className="booking-step active">
             <div>
               <h1 className="step-title">¿Qué necesitás agendar?</h1>
-              <p className="step-subtitle">Seleccioná el tipo de consulta y el día que prefieras</p>
+              <p className="step-subtitle">Seleccioná el tipo de evento y el día que prefieras</p>
             </div>
 
             <div>
-              <h3 className="calendar-section-title">Tipo de Consulta</h3>
+              <h3 className="calendar-section-title">Tipo de evento</h3>
               <div className="event-types-grid">
                 {PUBLIC_EVENTS.map((evt) => (
                   <button

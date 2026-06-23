@@ -19,8 +19,8 @@ export default function BookingShell({ children, timerText = '5:00', timezone }:
 
       <header className="booking-header">
         <div className="booking-brand">
-          <div className="booking-brand-icon">H</div>
-          <span className="booking-brand-text">HealthAdmin</span>
+          <div className="booking-brand-icon">A</div>
+          <span className="booking-brand-text">AgendaYa</span>
         </div>
         <div className="booking-timer-display">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

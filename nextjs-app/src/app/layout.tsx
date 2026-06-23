@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "HealthAdmin | Gestión Hospitalaria",
+  title: "AgendaYa | Gestión de Agenda",
   description: "Sistema de gestión de tipos de eventos y reservas",
 };
 

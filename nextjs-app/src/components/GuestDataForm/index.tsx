@@ -1,6 +1,6 @@
 'use client';
 /**
- * GuestDataForm — Formulario de datos del paciente
+ * GuestDataForm — Formulario de datos del invitado
  * Cubre: US_015, US_016, US_019
  */
 import { useState } from 'react';

@@ -9,7 +9,130 @@
   display: flex;
   flex-direction: column;
   background: var(--color-bg-primary);
+  color: var(--color-text-primary);
   position: relative;
+}
+
+/* Re-resolve theme tokens inside light booking (body uses dark :root) */
+.booking-shell p {
+  color: var(--color-text-secondary);
+}
+
+.booking-shell label {
+  color: var(--color-text-secondary);
+}
+
+.booking-shell .card {
+  color: var(--color-text-primary);
+}
+
+.booking-shell .card .input,
+.booking-shell .card .textarea,
+.booking-shell .card .select {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  background: var(--color-bg-input);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  outline: none;
+}
+
+.booking-shell .card .input:focus,
+.booking-shell .card .textarea:focus,
+.booking-shell .card .select:focus {
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.booking-shell .field-error {
+  font-size: var(--font-size-xs);
+  color: var(--color-danger-400);
+}
+
+.booking-shell .btn-slot {
+  color: var(--color-text-primary);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  min-width: 4.5rem;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  font-variant-numeric: tabular-nums;
+}
+
+.booking-shell .btn-day {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-semibold);
+  background: var(--color-primary-500);
+  border-color: var(--color-primary-500);
+  color: white;
+}
+
+.booking-shell .alert {
+  font-size: var(--font-size-sm);
+}
+
+.booking-shell .alert-error {
+  color: var(--color-danger-500);
+}
+
+.booking-shell .alert-success {
+  color: var(--color-success-500);
+}
+
+/* Stepper (BookingFlow uses stepper-number / stepper-label) */
+.booking-stepper .stepper-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  min-width: 64px;
+}
+
+.booking-stepper .stepper-number {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-bg-tertiary);
+  background: var(--color-bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-tertiary);
+  transition: all var(--transition-base);
+}
+
+.booking-stepper .stepper-item.active .stepper-number {
+  border-color: var(--color-primary-500);
+  background: var(--color-primary-500);
+  color: white;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
+.booking-stepper .stepper-item.completed .stepper-number {
+  border-color: var(--color-success-500);
+  background: var(--color-success-500);
+  color: white;
+}
+
+.booking-stepper .stepper-item.active .stepper-label {
+  color: var(--color-primary-400);
+}
+
+.booking-stepper .stepper-item.completed .stepper-label {
+  color: var(--color-success-400);
+}
+
+.booking-stepper .event-type-duration {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  margin-left: auto;
 }
 
 /* === Timer Bar (Top, Fixed) === */

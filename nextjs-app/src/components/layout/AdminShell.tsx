@@ -11,8 +11,8 @@ export default function AdminShell({ children }: Props) {
     <div className="app-shell">
       <aside className="sidebar">
         <div className="sidebar-brand">
-          <div className="sidebar-brand-icon">H</div>
-          <span className="sidebar-brand-text">HealthAdmin</span>
+          <div className="sidebar-brand-icon">A</div>
+          <span className="sidebar-brand-text">AgendaYa</span>
         </div>
 
         <nav className="sidebar-nav">
@@ -64,9 +64,9 @@ export default function AdminShell({ children }: Props) {
               <span className="notification-dot" />
             </button>
             <div className="header-user">
-              <div className="header-user-avatar">DM</div>
+              <div className="header-user-avatar">ML</div>
               <div className="header-user-info">
-                <span className="header-user-name">Dr. Martínez</span>
+                <span className="header-user-name">María López</span>
                 <span className="header-user-role">Administrador</span>
               </div>
             </div>

@@ -22,8 +22,8 @@ npm run start        # servir build (después de build)
 
 | URL | Contenido |
 |-----|-----------|
-| http://localhost:3000 | Tipos de Evento — panel admin (M03) |
-| http://localhost:3000/reservas | Flujo de reserva mobile (M04) |
+| http://localhost:3001 | Tipos de Evento — panel admin (M03) |
+| http://localhost:3001/reservas | Flujo de reserva mobile (M04) |
 
 ## Tests (consigna 2)
 

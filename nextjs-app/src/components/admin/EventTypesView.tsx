@@ -19,6 +19,7 @@ export default function EventTypesView() {
   const [dateTo, setDateTo] = useState('');
   const [view, setView] = useState<'table' | 'grid'>('table');
   const [modalOpen, setModalOpen] = useState(false);
+  const [editingEvent, setEditingEvent] = useState<EventType | null>(null);
 
   const filtered = useMemo(
     () =>
@@ -40,6 +41,53 @@ export default function EventTypesView() {
     );
   }
 
+  function openCreate() {
+    setEditingEvent(null);
+    setModalOpen(true);
+  }
+
+  function openEdit(id: string) {
+    const event = events.find((e) => e.id === id);
+    if (!event) return;
+    setEditingEvent(event);
+    setModalOpen(true);
+  }
+
+  function closeModal() {
+    setModalOpen(false);
+    setEditingEvent(null);
+  }
+
+  function handleSave(data: { name: string; description: string; duration: number }) {
+    const now = new Date().toISOString();
+    if (editingEvent) {
+      setEvents((prev) =>
+        prev.map((e) =>
+          e.id === editingEvent.id
+            ? { ...e, name: data.name, description: data.description, duration: data.duration, updatedAt: now }
+            : e
+        )
+      );
+    } else {
+      setEvents((prev) => [
+        ...prev,
+        {
+          id: `evt-${Date.now()}`,
+          name: data.name,
+          description: data.description,
+          duration: data.duration,
+          modality: 'presencial' as const,
+          confirmation: 'auto' as const,
+          status: 'active' as const,
+          createdAt: now,
+          updatedAt: now,
+          mediaFiles: [],
+        },
+      ]);
+    }
+    closeModal();
+  }
+
   return (
     <>
       <div className="page-header">
@@ -48,7 +96,7 @@ export default function EventTypesView() {
           <p className="page-subtitle">Administra los tipos de evento disponibles para tu agenda</p>
         </div>
         <div className="page-actions" style={{ display: 'flex', gap: 'var(--space-2)' }}>
-          <button type="button" className="btn btn-primary" onClick={() => setModalOpen(true)}>
+          <button type="button" className="btn btn-primary" onClick={openCreate}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="12" y1="5" x2="12" y2="19" />
               <line x1="5" y1="12" x2="19" y2="12" />
@@ -182,7 +230,12 @@ export default function EventTypesView() {
                   <td><span className="cell-date">{formatEventDate(event.createdAt)}</span></td>
                   <td>
                     <div className="cell-actions">
-                      <button type="button" className="btn btn-ghost btn-icon btn-sm" title="Editar">
+                      <button
+                        type="button"
+                        className="btn btn-ghost btn-icon btn-sm"
+                        title="Editar"
+                        onClick={() => openEdit(event.id)}
+                      >
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" /><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
                       </button>
                       <button type="button" className="btn btn-ghost btn-icon btn-sm" title="Duplicar">
@@ -229,8 +282,19 @@ export default function EventTypesView() {
 
       <EventFormModal
         open={modalOpen}
-        onClose={() => setModalOpen(false)}
+        onClose={closeModal}
         existingNames={events.map((e) => e.name)}
+        initialData={
+          editingEvent
+            ? {
+                id: editingEvent.id,
+                name: editingEvent.name,
+                description: editingEvent.description,
+                duration: editingEvent.duration,
+              }
+            : undefined
+        }
+        onSave={handleSave}
       />
     </>
   );

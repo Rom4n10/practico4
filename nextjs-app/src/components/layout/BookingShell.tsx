@@ -40,6 +40,8 @@ export default function BookingShell({ children, timerText = '5:00', timezone }:
       </div>
 
       {children}
+
+      <div id="booking-toast-container" className="booking-toast-container" aria-live="polite" />
     </div>
   );
 }

@@ -1216,6 +1216,21 @@
   animation: slideUp var(--transition-slow) ease both;
 }
 
+.booking-toast-container .toast.toast-success {
+  background: rgba(16, 185, 129, 0.14);
+  border: 1px solid var(--color-success-500);
+  border-left: 4px solid var(--color-success-500);
+}
+
+.booking-toast-container .toast.toast-success .toast-icon {
+  color: var(--color-success-500);
+}
+
+.booking-toast-container .toast.toast-success .toast-message {
+  color: var(--color-success-600, #059669);
+  font-weight: var(--font-weight-semibold);
+}
+
 /* ============================================
    Responsive — Tablet & Desktop Enhancement
    ============================================ */

@@ -1,6 +1,6 @@
-# HealthAdmin — Práctico 4
+# AgendaYa — Práctico 4
 
-Sistema de gestión hospitalaria para administrar tipos de eventos y reservar turnos médicos.
+Sistema de gestión de agenda para administrar tipos de eventos y reservar turnos.
 
 **Repositorio:** https://github.com/Rom4n10/practico4
 
@@ -19,7 +19,7 @@ Sistema de gestión hospitalaria para administrar tipos de eventos y reservar tu
 ```bash
 cd nextjs-app
 npm install
-npm run dev      # http://localhost:3000
+npm run dev      # http://localhost:3001
 npm run test     # 18 pruebas unitarias
 npm run build    # build de producción
 ```

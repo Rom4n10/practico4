@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import "../styles/components.css";
+import "../styles/ics/index.css";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -19,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" data-theme="light" className={inter.variable}>
-      <body>{children}</body>
+    <html lang="es" className={inter.variable}>
+      <body style={{ fontFamily: 'var(--font-family)' }}>{children}</body>
     </html>
   );
 }

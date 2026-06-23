@@ -28,11 +28,11 @@ npm run build    # build de producción
 
 | Ruta | Módulo |
 |------|--------|
-| `/` | Inicio |
-| `/admin` | Gestión de tipos de evento (M03) |
-| `/reservas` | Flujo de reservas (M04) |
+| `/` | Tipos de Evento — administración (M03) |
+| `/reservas` | Flujo de reservas público (M04) |
+| `/admin` | Redirige a `/` |
 
-## Prototipo estático (referencia visual)
+## Prototipo estático (referencia)
 
 ```bash
 cd ics
